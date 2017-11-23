@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" ng-app="listaCompras">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lista de Compras</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <section ng-controller="mainController">
+    <h1>Crie sua lista de compras</h1>
+    <div class="add-items">
+      <fieldset>
+        <label>Adicione produtos</label>
+        <br><br>
+        <input type="text" ng-model="itemName">
+        <button ng-click="addItem();">Adicionar</button>
+      </fieldset>
+    </div>
+    <div class="list">
+      <h2>Produtos Adicionados</h2>
+      <ol>
+        <li ng-repeat="item in items track by $index">{{ item }}
+          <span ng-show="items[$index-1] == items[$index]">(Item duplicado)</span>
+          <button ng-click="removeItem($index);">Remover item</button>
+        </li>
+        
+      </ol>
+    </div>
+  </section>
+
+  <script src="js/vendors/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/mainController.js"></script>
+</body>
+</html>
